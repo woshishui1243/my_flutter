@@ -1,0 +1,65 @@
+.DS_Store
+.dart_tool/
+
+.packages
+.pub/
+
+.idea/
+.vagrant/
+.sconsign.dblite
+.svn/
+
+*.swp
+profile
+
+DerivedData/
+
+.generated/
+
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+build/
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+*.perspectivev3
+
+xcuserdata
+
+*.moved-aside
+
+*.pyc
+*sync/
+Icon?
+.tags*
+
+build/
+.flutter-plugins
+.ios/Flutter/Generated.xcconfig
+
+.DB_Store?
+# Xcode
+.DS_Store
+*.DS_Store
+xcuserdata/
+# Xcode
+#
+
+!default.perspectivev3
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.xcuserstate
+
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
+#
+Pods/
+Podfile.lock
