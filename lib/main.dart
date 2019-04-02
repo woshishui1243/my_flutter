@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(
     const Center(
-      child: const Text("hello world!",textAlign: TextAlign.center,)
-      ,)
+      child: const RichText(text: "hello world!"),
+//      child: const RichText("hello world!",textAlign: TextAlign.center,)
+      )
 );
 
 //void main() => runApp(MyApp());
