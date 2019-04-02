@@ -2,18 +2,39 @@ import 'package:flutter/material.dart';
 
 void main() {
   //runApp接受的widget将成为widget树的根(ps：相当于顶层容器)
-  runApp(
-    //此处的Center和Text是两个widget,显示效果就是一个Hello, Flutter!在屏幕中央
-    new Center(
-      child: new Text(
-        'Hello, Flutter!',
-        textDirection: TextDirection.ltr,
-      ),
-    ),
+      runApp(new MaterialApp(
+        title: "我的应用",
+//    使用主题更改Ui
+        theme: new ThemeData(
+          primaryColor: Colors.white,
+        ),
+        home: new MyScaffold(),
+      )
   );
 }
 
-//void main() => runApp(MyApp());
+class MyScaffold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    /**
+     * Scaffold 是 Material library 中提供的一个widget,
+     * 它提供了默认的导航栏、标题和包含主屏幕widget树的body属性。
+     * widget树可以很复杂
+     */
+    return new Material(
+      child: new Scaffold(
+          appBar: new AppBar(
+            title: new Text("Welcome",
+                style: Theme.of(context).primaryTextTheme.title),
+          ),
+          //Center控件使其子控件在中间位置
+          body: new Center(
+//              Text控件显示各种文本
+            child: new Text("hello flutter"),
+          )),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
