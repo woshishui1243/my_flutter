@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 void main() {
   //runApp接受的widget将成为widget树的根(ps：相当于顶层容器)
-      runApp(new MaterialApp(
-        title: "我的应用",
+  runApp(new MaterialApp(
+    title: "我的应用",
 //    使用主题更改Ui
-        theme: new ThemeData(
-          primaryColor: Colors.white,
-        ),
-        home: new MyScaffold(),
-      )
+    theme: new ThemeData(
+      primaryColor: Colors.white,
+    ),
+    home: new MyScaffold(),
+  )
   );
 }
 
@@ -24,7 +24,7 @@ class MyScaffold extends StatelessWidget {
     return new Material(
       child: new Scaffold(
           appBar: new AppBar(
-            title: new Text("Welcome",
+            title: new Text("Welcome!",
                 style: Theme.of(context).primaryTextTheme.title),
           ),
           //Center控件使其子控件在中间位置
