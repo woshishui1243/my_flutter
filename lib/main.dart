@@ -2,17 +2,201 @@ import 'package:flutter/material.dart';
 
 void main() {
   //runApp接受的widget将成为widget树的根(ps：相当于顶层容器)
-  runApp(new MaterialApp(
-    title: "我的应用",
-//    使用主题更改Ui
-    theme: new ThemeData(
-      primaryColor: Colors.white,
-    ),
-    home: new MyScaffold(),
-  )
-  );
+//  runApp(new MaterialApp(
+//    title: "我的应用",
+////    使用主题更改Ui
+//    theme: new ThemeData(
+//      primaryColor: Colors.white,
+//    ),
+//    home: new MyScaffold(),
+//  )
+//  );
+  runApp(new MyApp());
 }
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    Widget titleSection = new Container(
+      padding: const EdgeInsets.all(32.0),
+      child: new Row(
+        children: <Widget>[
+          new Expanded(
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Container(
+                    padding: const EdgeInsets.only(bottom: 80),
+                    child: new Text(
+                      "哈哈哈哈哈啊哈哈哈",
+                      style: new TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  new Text(
+                    "嘻嘻嘻嘻嘻嘻嘻嘻嘻",
+                    style: new TextStyle(color: Colors.grey),
+                  ),
+                ],
+              )),
+          new Icon(
+            Icons.star,
+            color: Colors.red,
+          ),
+          new Text('100'),
+        ],
+      ),
+    );
+
+    Column getText(IconData icon, String text) {
+      return new Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Icon(icon, color: Colors.blue[500],),
+          new Container(
+            margin: const EdgeInsets.only(top: 8.0),
+              child: new Text(text, style: new TextStyle(color: Colors.blue),),
+          )
+        ],
+      );
+    };
+
+    Widget buttonSection = new Container(
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          getText(Icons.call, '联系'),
+          getText(Icons.near_me, '附近'),
+          getText(Icons.share, "分享"),
+        ],
+      ),
+    );
+
+
+    Widget textSection = new Container(
+      padding: const EdgeInsets.all(32.0),
+      child: new Text(
+        '轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。那河畔的金柳，是夕阳中的新娘；波光里的艳影，在我的心头荡漾。',
+        softWrap: true,
+      ),
+    );
+
+    return new MaterialApp(
+      title: '流式布局',
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: new Text("流式布局"),
+        ),
+        body: new ListView(
+          children: <Widget>[
+            new Image.asset("images/xiaozhu_horse.jpg",
+            width: 600,
+            height: 240,
+            fit: BoxFit.cover,),
+            titleSection,
+            buttonSection,
+            textSection,
+          ],
+        ),
+      ),
+    );
+
+  }
+}
+
+class TutoriaHome extends StatelessWidget {
+
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(
+        leading: new IconButton(icon: new Icon(Icons.menu),
+            tooltip: "导航菜单",
+            onPressed: null),
+        title: new Text("商城"),
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.shopping_cart),
+              tooltip: "进入购物车",
+              onPressed: openCart),
+        ],
+      ),
+      body: new Center(
+        child: new Text("hello flutter"),
+      ),
+
+      floatingActionButton: new FloatingActionButton(
+          tooltip: "增加",
+          child: new Icon(Icons.add),
+          backgroundColor: Colors.pink,
+          onPressed: addCount),
+    );
+  }
+
+  void openCart() {
+    print("进入购物车");
+  }
+
+  void addCount() {
+    print(this.count++);
+  }
+}
+
+class MyAppBar extends StatelessWidget {
+  final Widget title;
+  final int test;
+
+//  MyAppBar(this.title);
+  MyAppBar({this.title, this.test});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Container(
+      height: 56.0,
+      margin: const EdgeInsets.fromLTRB(0, 44, 0, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: new BoxDecoration(color:Colors.white),
+      child: new Row(
+        children: <Widget>[
+          new IconButton(icon: new Icon(Icons.menu),
+              tooltip: '导航菜单',
+              onPressed: null),
+          new Expanded(child: title),
+          new IconButton(icon: new Icon(Icons.search),
+              tooltip: "搜索",
+              onPressed: null)
+        ],
+      ),
+    );
+  }
+
+}
+
+class MyScaffold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Material(
+      child: new Column(
+        children: <Widget>[
+          new MyAppBar(
+            title: new Text("京东商城",
+              style: Theme.of(context).primaryTextTheme.title,
+                textAlign: TextAlign.center,)
+          ),
+          new Expanded(
+              child: new Center(
+                child: new Text("Hello!"),
+              ))
+        ],
+      ),
+    );
+  }
+}
+/**
 class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -35,28 +219,29 @@ class MyScaffold extends StatelessWidget {
     );
   }
 }
+ */
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or press Run > Flutter Hot Reload in a Flutter IDE). Notice that the
-        // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+//class MyApp extends StatelessWidget {
+//  // This widget is the root of your application.
+//  @override
+//  Widget build(BuildContext context) {
+//    return MaterialApp(
+//      title: 'Flutter Demo',
+//      theme: ThemeData(
+//        // This is the theme of your application.
+//        //
+//        // Try running your application with "flutter run". You'll see the
+//        // application has a blue toolbar. Then, without quitting the app, try
+//        // changing the primarySwatch below to Colors.green and then invoke
+//        // "hot reload" (press "r" in the console where you ran "flutter run",
+//        // or press Run > Flutter Hot Reload in a Flutter IDE). Notice that the
+//        // counter didn't reset back to zero; the application is not restarted.
+//        primarySwatch: Colors.blue,
+//      ),
+//      home: MyHomePage(title: 'Flutter Demo Home Page'),
+//    );
+//  }
+//}
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
