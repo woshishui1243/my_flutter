@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const Center(child: const Text("hello world!",textAlign: TextAlign.center,),));
+void main() => runApp(
+    const Center(
+      child: const Text("hello world!",textAlign: TextAlign.center,)
+      ,)
+);
 
 //void main() => runApp(MyApp());
 
